@@ -151,8 +151,63 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  if (typeof numberStr !== 'string') {
+    throw new Error('Input must be a string');
+  }
+
+  let result = '';
+  let i = 0;
+
+  while (i < numberStr.length) {
+    let word;
+    switch (numberStr[i]) {
+      case '0':
+        word = 'zero';
+        break;
+      case '1':
+        word = 'one';
+        break;
+      case '2':
+        word = 'two';
+        break;
+      case '3':
+        word = 'three';
+        break;
+      case '4':
+        word = 'four';
+        break;
+      case '5':
+        word = 'five';
+        break;
+      case '6':
+        word = 'six';
+        break;
+      case '7':
+        word = 'seven';
+        break;
+      case '8':
+        word = 'eight';
+        break;
+      case '9':
+        word = 'nine';
+        break;
+      case '-':
+        word = 'minus';
+        break;
+      case '.':
+      case ',':
+        word = 'point';
+        break;
+      default:
+        throw new Error('Invalid character in number string');
+    }
+
+    result += (i === 0 ? '' : ' ') + word;
+    i += 1;
+  }
+
+  return result;
 }
 
 /**
